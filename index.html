@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChadGPT — Join the Waitlist</title>
+  <meta name="description" content="ChadGPT is a brutal AI accountability coach. Join the waitlist for early access.">
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>C</text></svg>">
+</head>
+<body>
+
+  <!-- HERO — Two column: left content, right animated text -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <!-- LEFT SIDE — Form content -->
+        <div class="hero-left">
+          <div class="hero-tag">
+            <span class="hero-tag-line"></span>
+            <span class="hero-tag-text">Launching April 20, 2026</span>
+          </div>
+
+          <h1 class="hero-title">
+            Join The <em>ChadGPT</em><br>
+            Waitlist Today.
+          </h1>
+
+          <p class="hero-sub">
+            The AI accountability coach that remembers your goals,
+            calls out your excuses, and won't let you quit.
+          </p>
+
+          <!-- Inline Form -->
+          <form class="hero-form" id="waitlist-form">
+            <input type="text" id="input-name" placeholder="Your name..." required autocomplete="name">
+            <input type="email" id="input-email" placeholder="Enter your email..." required autocomplete="email">
+            <button type="submit" class="form-btn" id="btn-submit">Get Notified</button>
+          </form>
+          <div class="form-error-msg" id="form-error"></div>
+
+          <!-- Success (hidden) -->
+          <div class="hero-success" id="form-success">
+            <h3>You're in.</h3>
+            <p>Chad is watching. Don't make him wait.</p>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE — Interaction Reveal -->
+        <div class="hero-right">
+          <div class="reveal-container" id="reveal-target">
+            <img src="./images/pic1.png" alt="ChadGPT Base" class="hero-image base">
+            <img src="./images/pic2.png" alt="ChadGPT Reveal" class="hero-image reveal">
+          </div>
+        </div>
+      </div>
+
+      <!-- Counter + Countdown — centered below -->
+      <div class="hero-meta">
+        <div class="waitlist-count">
+          <strong id="waitlist-count">0</strong> people already on the waitlist
+        </div>
+
+        <div class="countdown" id="countdown">
+          <div class="cd-block">
+            <span class="cd-value" id="cd-days">00</span>
+            <span class="cd-label">Days</span>
+          </div>
+          <span class="cd-sep">:</span>
+          <div class="cd-block">
+            <span class="cd-value" id="cd-hours">00</span>
+            <span class="cd-label">Hours</span>
+          </div>
+          <span class="cd-sep">:</span>
+          <div class="cd-block">
+            <span class="cd-value" id="cd-mins">00</span>
+            <span class="cd-label">Min</span>
+          </div>
+          <span class="cd-sep">:</span>
+          <div class="cd-block">
+            <span class="cd-value" id="cd-secs">00</span>
+            <span class="cd-label">Sec</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT — Full width columns with divider lines -->
+  <section class="about">
+    <div class="container">
+      <!-- Pilot-style divider label -->
+      <div class="about-header">
+        <span class="about-header-line"></span>
+        <span class="about-header-text">WHAT IS <span>CHADGPT</span></span>
+        <span class="about-header-line"></span>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-item">
+          <div class="about-item-num">01</div>
+          <h3>Remembers Everything</h3>
+          <p>Your goals, your excuses, your patterns. No fresh starts. No hiding from what you said you'd do.</p>
+        </div>
+        <div class="about-item">
+          <div class="about-item-num">02</div>
+          <h3>Brutally Honest</h3>
+          <p>No sugarcoating. Every response is tied to your own stated goals. Chad doesn't care about your feelings.</p>
+        </div>
+        <div class="about-item">
+          <div class="about-item-num">03</div>
+          <h3>Argue Back</h3>
+          <p>Think you have a valid excuse? Open conversation mode. Try to justify yourself. Chad won't budge.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <div class="faq-header">
+        <h2 class="faq-title">Frequently Asked <em>Questions</em></h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            What exactly is ChadGPT?
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>ChadGPT is a brutal AI accountability coach app. You tell it your goals, and it holds you accountable every single day. It remembers your excuses, tracks your streaks, and won't let you argue your way out of doing the work.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            When does it launch?
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>ChadGPT launches on April 20, 2026. Waitlist members get early access before the public release on the Google Play Store.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            How much will it cost?
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Free tier with 3 reality checks per day. Pro at Rs.99/month — less than a chai per day. Or Rs.599 one-time for Lifetime access. Built for India, priced for action.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            What platform is it available on?
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Android first via the Google Play Store. iOS version will follow after the initial launch.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Is my data private?
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. ChadGPT is private by default. Your conversations, goals, and data are never shared. You can delete your account and all data at any time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <span class="footer-left">Built by <span>A2B AI Technologies</span> — 2026 ChadGPT</span>
+      <div class="footer-right">
+        <a href="#" class="footer-link">Privacy</a>
+        <a href="#" class="footer-link">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
