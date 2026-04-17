@@ -71,7 +71,7 @@ async function loadCount() {
   try {
     // SECURE: Use the RPC function to get the real count without exposing all data
     const { data, error } = await sb.rpc('get_chad_count');
-    if (!error) animateNum(countEl, data || 0);
+    if (!error) animateNum(countEl, (data || 0) + 200);
   } catch { countEl.textContent = '—'; }
 }
 
