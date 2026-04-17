@@ -110,9 +110,17 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 const form = document.getElementById('waitlist-form');
 const nameIn = document.getElementById('input-name');
 const emailIn = document.getElementById('input-email');
+const suggestionIn = document.getElementById('input-suggestion');
 const errEl = document.getElementById('form-error');
 const btnEl = document.getElementById('btn-submit');
 const successEl = document.getElementById('form-success');
+
+const suggestionModal = document.getElementById('suggestion-modal');
+const btnSkip = document.getElementById('btn-skip');
+const btnFinalSubmit = document.getElementById('btn-final-submit');
+
+let tempName = '';
+let tempEmail = '';
 
 function showErr(msg) {
   errEl.textContent = msg;
@@ -128,6 +136,14 @@ form.addEventListener('submit', async e => {
   if (!name) return showErr('Please enter your name.');
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showErr('Please enter a valid email.');
 
+  tempName = name;
+  tempEmail = email;
+
+  suggestionModal.classList.add('visible');
+});
+
+async function submitWaitlist(suggestions) {
+  suggestionModal.classList.remove('visible');
   btnEl.disabled = true;
   btnEl.textContent = 'Joining...';
 
@@ -140,7 +156,7 @@ form.addEventListener('submit', async e => {
   }
 
   try {
-    const { error } = await sb.from('chad_waitlist').insert([{ name, email }]);
+    const { error } = await sb.from('chad_waitlist').insert([{ name: tempName, email: tempEmail, suggestions }]);
 
     if (error) {
       if (error.code === '23505' || error.message?.includes('duplicate')) {
@@ -163,6 +179,16 @@ form.addEventListener('submit', async e => {
     btnEl.disabled = false;
     btnEl.textContent = 'Get Notified';
   }
+}
+
+btnSkip.addEventListener('click', (e) => {
+  e.preventDefault();
+  submitWaitlist('');
+});
+
+btnFinalSubmit.addEventListener('click', (e) => {
+  e.preventDefault();
+  submitWaitlist(suggestionIn.value.trim());
 });
 // ═══════════════════════════════════════════════════════════════
 // INTERACTION REVEAL (Mouselens)

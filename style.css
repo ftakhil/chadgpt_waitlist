@@ -279,11 +279,11 @@ button, input {
   color: var(--gray-dark);
 }
 
-.hero-form input:first-child {
+.hero-form input:not(:last-of-type) {
   border-right: 1px solid var(--black-border);
 }
-
-.hero-form .form-btn {
+.hero-form .form-btn,
+.modal-content .form-btn {
   background: var(--red);
   color: var(--white);
   padding: 16px 32px;
@@ -294,13 +294,16 @@ button, input {
   transition: background var(--transition);
   flex-shrink: 0;
   font-family: var(--font-body);
+  border: none;
 }
 
-.hero-form .form-btn:hover {
+.hero-form .form-btn:hover,
+.modal-content .form-btn:hover {
   background: var(--red-dark);
 }
 
-.hero-form .form-btn:disabled {
+.hero-form .form-btn:disabled,
+.modal-content .form-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
@@ -633,6 +636,103 @@ button, input {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   MODAL
+   ═══════════════════════════════════════════════════════════════ */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.visible {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content {
+  background: var(--black-input);
+  border: 1px solid var(--black-border);
+  border-radius: var(--radius);
+  padding: 40px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  margin: 20px;
+}
+
+.modal-content h3 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+
+.modal-content textarea {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--black-border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 300;
+  margin-bottom: 24px;
+  min-height: 120px;
+  resize: vertical;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.modal-content textarea::placeholder {
+  color: var(--gray-dark);
+}
+
+.modal-content textarea:focus {
+  border-color: var(--red);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.form-btn-secondary {
+  background: transparent;
+  border: 1px solid var(--black-border);
+  color: var(--white);
+  padding: 16px 32px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: var(--radius);
+  flex: 1;
+  transition: all var(--transition);
+  font-family: var(--font-body);
+}
+
+.form-btn-secondary:hover {
+  border-color: var(--gray-dark);
+}
+
+.modal-content .form-btn {
+  flex: 1;
+  border-radius: var(--radius);
+}
+
+/* ═══════════════════════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
@@ -705,7 +805,7 @@ button, input {
     max-width: 100%;
   }
 
-  .hero-form input:first-child {
+  .hero-form input:not(:last-of-type) {
     border-right: none;
     border-bottom: 1px solid var(--black-border);
   }
