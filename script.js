@@ -139,24 +139,18 @@ form.addEventListener('submit', async e => {
   tempName = name;
   tempEmail = email;
 
-  suggestionModal.classList.add('visible');
-});
-
-async function submitWaitlist(suggestions) {
-  suggestionModal.classList.remove('visible');
   btnEl.disabled = true;
   btnEl.textContent = 'Joining...';
 
   if (isDemo) {
-    await new Promise(r => setTimeout(r, 1200));
-    form.style.display = 'none';
-    errEl.style.display = 'none';
-    successEl.classList.add('visible');
+    await new Promise(r => setTimeout(r, 600));
+    suggestionModal.classList.add('visible');
     return;
   }
 
   try {
-    const { error } = await sb.from('chad_waitlist').insert([{ name: tempName, email: tempEmail, suggestions }]);
+    // Insert immediately to secure the lead
+    const { error } = await sb.from('chad_waitlist').insert([{ name: tempName, email: tempEmail }]);
 
     if (error) {
       if (error.code === '23505' || error.message?.includes('duplicate')) {
@@ -168,10 +162,8 @@ async function submitWaitlist(suggestions) {
       throw error;
     }
 
-    form.style.display = 'none';
-    errEl.style.display = 'none';
-    successEl.classList.add('visible');
-    loadCount();
+    // Success - show modal for optional suggestions
+    suggestionModal.classList.add('visible');
 
   } catch (err) {
     console.error(err);
@@ -179,16 +171,33 @@ async function submitWaitlist(suggestions) {
     btnEl.disabled = false;
     btnEl.textContent = 'Get Notified';
   }
+});
+
+function finishWaitlist(suggestions) {
+  suggestionModal.classList.remove('visible');
+  
+  if (!isDemo && suggestions) {
+    // Fire-and-forget update to add suggestion
+    sb.from('chad_waitlist').update({ suggestions }).eq('email', tempEmail).then(({ error }) => {
+      if(error) console.error('Feedback failed to save', error);
+    });
+  }
+
+  form.style.display = 'none';
+  errEl.style.display = 'none';
+  successEl.classList.add('visible');
+  
+  if (!isDemo) loadCount();
 }
 
 btnSkip.addEventListener('click', (e) => {
   e.preventDefault();
-  submitWaitlist('');
+  finishWaitlist('');
 });
 
 btnFinalSubmit.addEventListener('click', (e) => {
   e.preventDefault();
-  submitWaitlist(suggestionIn.value.trim());
+  finishWaitlist(suggestionIn.value.trim());
 });
 // ═══════════════════════════════════════════════════════════════
 // INTERACTION REVEAL (Mouselens)
