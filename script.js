@@ -36,9 +36,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 // ═══════════════════════════════════════════════════════════════
-// COUNTDOWN — April 20, 2026
+// COUNTDOWN — may 13, 2026
 // ═══════════════════════════════════════════════════════════════
-const LAUNCH = new Date('2026-04-30T00:00:00+05:30').getTime();
+const LAUNCH = new Date('2026-05-13T00:00:00+05:30').getTime();
 const cdD = document.getElementById('cd-days');
 const cdH = document.getElementById('cd-hours');
 const cdM = document.getElementById('cd-mins');
